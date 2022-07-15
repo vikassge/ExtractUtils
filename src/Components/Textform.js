@@ -19,8 +19,31 @@ export default function Textform(props) {
     console.log("Propercase was clicked");
     let newText=text.toLowerCase();
     setText(newText)
+    props.showAlert("converted to Propercase!", "success");
   }
-  const handleOnChange =(event)=>{
+  
+  const clearText=()=>{
+    if(text.length===0)
+    {
+      props.showAlert("There is no text to clear", "danger")
+    }
+    else{
+    setText("");
+    props.showAlert("Clear Text", "success")}
+  }
+  const copyText=()=>{
+
+    if(text.length===0)
+    {
+      props.showAlert("There is no text to copy", "danger")
+    }
+    else{
+    let text=document.getElementById('exampleFormControlTextarea1');
+    text.select();
+    navigator.clipboard.writeText(text.value);
+    props.showAlert("Text Copied to clipboard", "success")}
+   }
+   const handleOnChange =(event)=>{
     console.log("On Change");
     setText(event.target.value);
   }
@@ -40,6 +63,10 @@ export default function Textform(props) {
     <button className='btn btn-primary my-3 mx-2' onClick={handleUpClick}>Convert To UpperCase</button>
     <button className='btn btn-primary my-3 mx-2' onClick={handleLowClick}>Convert To LowerCase</button>
     <button className='btn btn-primary my-3 mx-2' onClick={handleProperClick}>Convert To ProperCase</button>
+    <button className='btn btn-primary my-3 mx-2' onClick={clearText}>Clear Text</button>
+    <button className='btn btn-primary my-3 mx-2' onClick={copyText}>Copy Text</button>
+   
+    
    
      </div>
     
