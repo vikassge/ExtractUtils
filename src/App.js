@@ -50,7 +50,7 @@ function App() {
   return (
    <>
    <Router>
-   <Navbar title="TEXTUTILS1" aboutText="About TextUtils" mode={mode}  toggleMode={toggleMode}/>
+   <Navbar title="Extract-Utils" aboutText="About TextUtils" mode={mode}  toggleMode={toggleMode}/>
    <Alert alert={alert}/>
    <div className='container my-3'>
    <Switch>
